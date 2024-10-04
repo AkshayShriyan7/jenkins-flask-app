@@ -1,0 +1,19 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: flask-app
+  description: A simple Flask application
+  tags:
+    - flask
+    - python
+spec:
+  type: service
+  lifecycle: production
+  owner: team-xyz
+  system: backend-system
+  providesApis:
+    - flask-app-api
+  links:
+    - url: http://0.0.0.0:5000
+      title: Open Flask App
+

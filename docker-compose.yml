@@ -1,0 +1,11 @@
+version: '3'
+services:
+  flask-app:
+    image: your-username/flask-app:latest
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=production
+    volumes:
+      - .:/app  # Optional: Sync local files with the container for live updates
+
