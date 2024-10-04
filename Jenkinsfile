@@ -12,15 +12,19 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
+	  stage('Install Python and Pip') {
             steps {
-                sh 'pip install -r requirements.txt'
+                sh '''
+                # Install Python and pip
+                apt-get update
+                apt-get install -y python3 python3-pip
+                '''
             }
         }
 
-        stage('Run Unit Tests') {
+        stage('Install Dependencies') {
             steps {
-                sh 'pytest tests/'  // Assuming tests are located in the 'tests' directory
+                sh 'pip install -r requirements.txt'
             }
         }
 
