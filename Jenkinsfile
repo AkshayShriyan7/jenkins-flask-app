@@ -46,7 +46,12 @@ pipeline {
 
     post {
         always {
-            cleanWs()
+            node {
+                cleanWs()  // Clean workspace
+                script {
+                    sh 'docker-compose down'  // Stop the Docker container after pipeline completes
+                }
+            }
         }
     }
 }
