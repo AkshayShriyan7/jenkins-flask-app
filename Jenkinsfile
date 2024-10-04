@@ -2,8 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials') // Set DockerHub credentials in Jenkins
-        IMAGE_NAME = 'your-username/flask-app'
+        IMAGE_NAME = 'sample-jenkins-flask-app'
     }
 
     stages {
@@ -45,13 +44,10 @@ pipeline {
     }
 
     post {
-    always {
-        sh 'rm -rf *'  // Manually clean up the workspace
-        script {
-            sh 'docker-compose down'  // Stops the containers after the pipeline finishes
+        always {
+            cleanWs()
         }
     }
-}
 
 }
 
