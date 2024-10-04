@@ -16,6 +16,7 @@ pipeline {
             steps {
                 sh '''
                 # Install Python and pip
+                apt-get install sudo
                 sudo apt-get update
                 sudo apt-get install -y python3 python3-pip
                 '''
