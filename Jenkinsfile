@@ -45,14 +45,13 @@ pipeline {
     }
 
     post {
-        always {
-            node('post cleanup') {
-                cleanWs()  // Clean workspace
-                script {
-                    sh 'docker-compose down'  // Stop the Docker container after pipeline completes
-                }
-            }
+    always {
+        sh 'rm -rf *'  // Manually clean up the workspace
+        script {
+            sh 'docker-compose down'  // Stops the containers after the pipeline finishes
         }
     }
+}
+
 }
 
